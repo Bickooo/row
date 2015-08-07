@@ -22,18 +22,24 @@ public class Oar : MonoBehaviour {
 		paddleUnderwater = paddle.position.y < underwaterDepth ? true : false;
 
 		if(paddleUnderwater) {
+			if(Input.GetAxisRaw(verticalAxis) != 0f && Input.GetAxisRaw(lateralAxis) != 0f) {
+				dragPoint.drag = 0;
+			}
+			else {
+				dragPoint.drag = paddleDrag;
+			}
+
 			damping = underwaterDamping;
-			dragPoint.drag = paddleDrag;
 		}
 		else {
 			damping = 1;
 			dragPoint.drag = 0;
 		}
 
-		if(Input.GetAxis(verticalAxis) != 0f)
+		if(Input.GetAxisRaw(verticalAxis) != 0f)
 			transform.Rotate(Vector3.forward * Input.GetAxis(verticalAxis) * verticalSpeed, Space.Self);
 
-		if(Input.GetAxis(lateralAxis) != 0f)
+		if(Input.GetAxisRaw(lateralAxis) != 0f)
 			transform.Rotate(Vector3.up * Input.GetAxis(lateralAxis) * lateralSpeed * damping, Space.World);
 	}
 
