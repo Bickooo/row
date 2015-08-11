@@ -3954,7 +3954,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 903762923}
   - 114: {fileID: 831174322}
-  - 135: {fileID: 831174323}
   m_Layer: 0
   m_Name: Buoyancy Point Rear Starboard
   m_TagString: Untagged
@@ -3980,18 +3979,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16
---- !u!135 &831174323
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 831174321}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .100000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &833064365
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,7 +4069,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 931617432}
   - 114: {fileID: 834963239}
-  - 135: {fileID: 834963240}
   m_Layer: 0
   m_Name: Buoyancy Point Rear Port
   m_TagString: Untagged
@@ -4108,18 +4094,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16
---- !u!135 &834963240
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 834963238}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .100000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &840160230
 GameObject:
   m_ObjectHideFlags: 0
@@ -5808,6 +5782,7 @@ RectTransform:
   - {fileID: 1597208454}
   - {fileID: 1513865601}
   - {fileID: 833064366}
+  - {fileID: 1307888912}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -7107,6 +7082,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winningText: {fileID: 833064368}
+  gameOver: 0
+--- !u!1 &1307888911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1307888912}
+  - 222: {fileID: 1307888915}
+  - 114: {fileID: 1307888914}
+  - 114: {fileID: 1307888913}
+  - 114: {fileID: 1307888916}
+  m_Layer: 5
+  m_Name: Timer Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1307888912
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307888911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1255014561}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 40}
+  m_Pivot: {x: .5, y: 1}
+--- !u!114 &1307888913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307888911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1307888914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307888911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 00:00:00:0000000
+--- !u!222 &1307888915
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307888911}
+--- !u!114 &1307888916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307888911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1a74daabcbb2e44aaac8da70df47ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1307888914}
 --- !u!1 &1309520312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7172,7 +7242,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1329243220}
   - 114: {fileID: 1329243221}
-  - 135: {fileID: 1329243222}
   m_Layer: 0
   m_Name: Buoyancy Point Front
   m_TagString: Untagged
@@ -7210,18 +7279,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16
---- !u!135 &1329243222
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1329243219}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .100000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1333202449
 GameObject:
   m_ObjectHideFlags: 0
@@ -9918,7 +9975,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1726866850}
   - 114: {fileID: 2029688034}
-  - 135: {fileID: 2029688035}
   m_Layer: 0
   m_Name: Buoyancy Point Front Starboard
   m_TagString: Untagged
@@ -9944,18 +10000,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16
---- !u!135 &2029688035
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2029688033}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .100000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2034722680
 GameObject:
   m_ObjectHideFlags: 0
@@ -10188,7 +10232,7 @@ Rigidbody:
   m_GameObject: {fileID: 2079402289}
   serializedVersion: 2
   m_Mass: 5
-  m_Drag: .0500000007
+  m_Drag: .200000003
   m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -10226,7 +10270,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1143660509}
   - 114: {fileID: 2098451428}
-  - 135: {fileID: 2098451429}
   m_Layer: 0
   m_Name: Buoyancy Point Front Port
   m_TagString: Untagged
@@ -10252,18 +10295,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 16
---- !u!135 &2098451429
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2098451427}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .100000001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2100209490
 GameObject:
   m_ObjectHideFlags: 0

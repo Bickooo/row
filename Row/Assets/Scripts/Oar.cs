@@ -14,38 +14,53 @@ public class Oar : MonoBehaviour {
 	public float rowingPower = 5f;
 	public Rigidbody dragPoint;
 	public float paddleDrag = 2f;
-	public float underwaterDepth = 0.1f;
+	public LayerMask layerMask;
+	public float rowingCutoffAngle = 2f;
 	bool paddleUnderwater;
 	float damping;
+	bool isInRowingAngles;
 
 	void Update () {
-		paddleUnderwater = paddle.position.y < underwaterDepth ? true : false;
+		RaycastHit hit;
+		
+		if (Physics.Raycast(paddle.position, Vector3.up, out hit, 100.0F, layerMask))
+			paddleUnderwater = true;
+		else
+			paddleUnderwater = false;
 
-		if(paddleUnderwater) {
-			if(Input.GetAxisRaw(verticalAxis) != 0f && Input.GetAxisRaw(lateralAxis) != 0f) {
+		if(paddleUnderwater)
+		{
+			if(Input.GetAxisRaw(verticalAxis) != 0f && Input.GetAxisRaw(lateralAxis) != 0f)
 				dragPoint.drag = 0;
-			}
-			else {
+			else
 				dragPoint.drag = paddleDrag;
-			}
-
+			
 			damping = underwaterDamping;
 		}
-		else {
+		else
+		{
 			damping = 1;
 			dragPoint.drag = 0;
 		}
-
+		
 		if(Input.GetAxisRaw(verticalAxis) != 0f)
 			transform.Rotate(Vector3.forward * Input.GetAxis(verticalAxis) * verticalSpeed, Space.Self);
-
+		
 		if(Input.GetAxisRaw(lateralAxis) != 0f)
 			transform.Rotate(Vector3.up * Input.GetAxis(lateralAxis) * lateralSpeed * damping, Space.World);
 	}
 
 	void FixedUpdate () {
-		if(Input.GetAxis(lateralAxis) != 0f && paddleUnderwater)
+		Vector3 localAngles = transform.localRotation.eulerAngles;
+
+		if(localAngles.y > (minMaxLateral.x + rowingCutoffAngle) || localAngles.y < (minMaxLateral.y - rowingCutoffAngle))
+			isInRowingAngles = true;
+		else
+			isInRowingAngles = false;
+
+		if(Input.GetAxis(lateralAxis) != 0f && paddleUnderwater && isInRowingAngles) {
 			boatRigidbody.AddForceAtPosition(transform.forward * Input.GetAxis(lateralAxis) * rowingPower, paddle.position);
+		}
 	}
 
 	void LateUpdate () {
